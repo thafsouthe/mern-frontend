@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "./api"; // <-- use API instead of axios
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    // ✅ Use relative path so it works in production and locally
-    axios.get("/api/tasks")
+    API.get("/api/tasks")
       .then(res => setTasks(res.data))
       .catch(err => console.error(err));
   }, []);
